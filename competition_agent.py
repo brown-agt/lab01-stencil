@@ -9,7 +9,8 @@ class CompetitionAgent(ChickenAgent):
         self.actions = [self.SWERVE, self.CONTINUE]
 
     def get_action(self):
-        return self.CONTINUE
+        # TODO: FIll out get action 
+        raise NotImplementedError
 
     def update(self):
         return None
