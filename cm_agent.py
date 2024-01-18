@@ -1,7 +1,7 @@
 from agent import Agent
 import json
 import pandas as pd
-import signal
+import threading
 
 
 class CompleteMatrixAgent(Agent):
@@ -17,9 +17,9 @@ class CompleteMatrixAgent(Agent):
                      self.utils[p1_action][p2_action][1]]
         return utils
 
-    @staticmethod
-    def timeout_handler(signum, frame):
-        raise TimeoutError("Timeout occurred")
+    def timeout_handler(self):
+        print(f"{self.name} has timed out")
+        self.timeout = True
 
     def handle_permissions(self, resp):
         self.player_type = resp['player_type']
@@ -47,6 +47,10 @@ class CompleteMatrixAgent(Agent):
             resp = json.loads(data)
             if resp['message'] == 'provide_game_name':
                 print(f"We are playing {resp['game_name']}")
+                message = {
+                    "message": "game_name_recieved",
+                }
+                self.client.send(json.dumps(message).encode())
                 self.restart()
         while True:
             data = self.client.recv(1024).decode()
@@ -58,20 +62,22 @@ class CompleteMatrixAgent(Agent):
                     self.client.send(json.dumps(message).encode())
                     continue
                 elif request['message'] == 'request_action':
-                    signal.signal(signal.SIGALRM,
-                                  CompleteMatrixAgent.timeout_handler)
-                    signal.alarm(self.response_time)
+                    self.timeout = False
                     try:
+                        timer = threading.Timer(self.response_time, self.timeout_handler)
+                        timer.start()
                         action = self.get_action()
-                    except TimeoutError:
-                        action = -1
-                    signal.alarm(0)
+                    finally:
+                        if self.timeout: 
+                            action = -1
+                        timer.cancel()
 
                     try:
                         action = int(action)
                         message = {
                             "message": "provide_action",
-                            "action": action
+                            "action": action, 
+                            "timeout": self.timeout
                         }
                         json_m = json.dumps(message).encode()
                         self.client.send(json_m)
@@ -79,7 +85,8 @@ class CompleteMatrixAgent(Agent):
                         print("Warning: Get Action must return an Integer")
                         message = {
                             "message": "provide_action",
-                            "action": -1
+                            "action": -1, 
+                            "timeout":self.timeout
                         }
                         json_m = json.dumps(message).encode()
                         self.client.send(json_m)
