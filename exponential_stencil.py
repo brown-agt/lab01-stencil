@@ -42,6 +42,7 @@ class ExponentialAgent(RPSAgent):
          the Exponential Weights strateg
         """
         # TODO Calculate the average reward for each action over time and return the softmax of it
+        raise NotImplementedError
 
 
 

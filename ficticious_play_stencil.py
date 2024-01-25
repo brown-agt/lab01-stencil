@@ -32,6 +32,7 @@ class FictitiousPlayAgent(RPSAgent):
         over the opponent’s next move in (self.dist).
         """
         # TODO Return a a probability distribution over the opponent’s next move
+        raise NotImplementedError
 
     def optimize(self, dist):
         """
@@ -40,6 +41,7 @@ class FictitiousPlayAgent(RPSAgent):
         Please return one of [self.ROCK, self.PAPER, self.SCISSORS]
         """
         # TODO Calculate the expected payoff of each action and return the action with the highest payoff
+        raise NotImplementedError
 
 if __name__ == "__main__":
     agent_name = "FP" # Please give your agent a name
