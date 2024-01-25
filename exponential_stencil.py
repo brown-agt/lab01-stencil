@@ -1,6 +1,6 @@
-from rps_agent import RPSAgent
-from rps_arena import RPSArena
-from ta_agent import TAAgent
+from agents.base_agents.rps_agent import RPSAgent
+from local_games.rps_arena import RPSArena
+from agt_server.agents.test_agents.rps.ta_agent.my_agent import TAAgent
 import argparse
 import numpy as np
 
@@ -15,10 +15,6 @@ class ExponentialAgent(RPSAgent):
         self.actions = [self.ROCK, self.SCISSORS, self.PAPER]
         self.my_utils = np.zeros(len(self.actions))
         self.counts = [0, 0, 0]
-
-        # NOTE: Changing this will only change your agent's perception of the utility and
-        #       will not change the actual utility used in the game
-        self.utility = np.array([[0, -1, 1], [1, 0, -1], [-1, 1, 0]])
 
     @staticmethod
     def softmax(x):
@@ -47,35 +43,27 @@ class ExponentialAgent(RPSAgent):
          the Exponential Weights strateg
         """
         # TODO Calculate the average reward for each action over time and return the softmax of it
-        raise NotImplementedError
+        average_util = np.zeros(len(self.actions))
+        for i, _ in enumerate(self.actions):
+            average_util[i] = self.my_utils[i]
+            if self.counts[i] != 0:
+                average_util[i] = average_util[i] / self.counts[i]
+        return self.softmax(average_util)
+
 
 
 if __name__ == "__main__":
-    #### DO NOT TOUCH THIS #####
-    parser = argparse.ArgumentParser(description='My Agent')
-    parser.add_argument('agent_name', type=str, help='Name of the agent')
-    parser.add_argument('--run_server', action='store_true',
-                        help='Connects the agent to the server')
-    parser.add_argument('--ip', type=str, default='127.0.0.1',
-                        help='IP address (default: 127.0.0.1)')
-    parser.add_argument('--port', type=int, default=8080,
-                        help='Port number (default: 8080)')
-
-    args = parser.parse_args()
-
-    agent = ExponentialAgent(args.agent_name)
-    if args.run_server:
-        agent.connect(ip=args.ip, port=args.port)
-    else:
-        arena = RPSArena(
-            num_rounds=1000,
-            timeout=1,
-            players=[
-                agent,
-                TAAgent("TA_Agent_1"),
-                TAAgent("TA_Agent_2"),
-                TAAgent("TA_Agent_3"),
-                TAAgent("TA_Agent_4")
-            ]
-        )
-        arena.run()
+    agent_name = "Exponential" # Please give your agent a name
+    agent = ExponentialAgent(agent_name)
+    arena = RPSArena(
+        num_rounds=1000,
+        timeout=1,
+        players=[
+            agent,
+            TAAgent("TA_Agent_1"),
+            TAAgent("TA_Agent_2"),
+            TAAgent("TA_Agent_3"),
+            TAAgent("TA_Agent_4")
+        ]
+    )
+    arena.run()
