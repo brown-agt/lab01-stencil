@@ -14,10 +14,10 @@ class CompetitionAgent(ChickenAgent):
 
 if __name__ == "__main__":
     #### PLEASE EDIT THESE VARIABLES #####
-    agent_name = "Competition Agent"  # TODO: Please give your agent a name
-    ip = '10.38.61.67' # TODO: Please ask your Lab TA for the IP of the server
-    port = 8080 # TODO: Please ask your Lab TA for the correct port
-    join_server = True # TODO: Set this to true if you want to join the server rather than run a local game against yourself
+    agent_name = ... # TODO: Please give your agent a name
+    ip = ... # TODO: Please ask your Lab TA for the IP of the server
+    port = ... # TODO: Please ask your Lab TA for the correct port
+    join_server = False # TODO: Set this to True if you want to join the server rather than run a local game against yourself
     
     agent = CompetitionAgent(agent_name)
     if join_server:

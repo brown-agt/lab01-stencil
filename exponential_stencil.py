@@ -1,7 +1,6 @@
 from agents.base_agents.rps_agent import RPSAgent
 from local_games.rps_arena import RPSArena
 from agt_server.agents.test_agents.rps.ta_agent.my_agent import TAAgent
-import argparse
 import numpy as np
 
 
@@ -43,12 +42,6 @@ class ExponentialAgent(RPSAgent):
          the Exponential Weights strateg
         """
         # TODO Calculate the average reward for each action over time and return the softmax of it
-        average_util = np.zeros(len(self.actions))
-        for i, _ in enumerate(self.actions):
-            average_util[i] = self.my_utils[i]
-            if self.counts[i] != 0:
-                average_util[i] = average_util[i] / self.counts[i]
-        return self.softmax(average_util)
 
 
 

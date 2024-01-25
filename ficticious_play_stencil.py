@@ -1,4 +1,3 @@
-import argparse
 import numpy as np
 from agt_server.agents.base_agents.rps_agent import RPSAgent
 from agt_server.local_games.rps_arena import RPSArena
@@ -33,12 +32,6 @@ class FictitiousPlayAgent(RPSAgent):
         over the opponent’s next move in (self.dist).
         """
         # TODO Return a a probability distribution over the opponent’s next move
-        dist = np.zeros(len(self.actions))
-        for a in self.opp_action_history:
-            dist[a] += 1
-        if sum(dist) == 0:
-            return np.ones(len(self.actions))/len(self.actions)
-        return dist/sum(dist)
 
     def optimize(self, dist):
         """
@@ -47,15 +40,6 @@ class FictitiousPlayAgent(RPSAgent):
         Please return one of [self.ROCK, self.PAPER, self.SCISSORS]
         """
         # TODO Calculate the expected payoff of each action and return the action with the highest payoff
-        action_utils = np.zeros(len(self.actions))
-        for i, a1 in enumerate(self.actions):
-            # Calculate the payoff
-            for j, a2 in enumerate(self.actions):
-                action_utils[i] += dist[j]* self.calculate_utils(a1, a2)
-
-        best_action = np.argmax(action_utils)
-        return best_action
-
 
 if __name__ == "__main__":
     agent_name = "FP" # Please give your agent a name
