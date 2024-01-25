@@ -7,7 +7,7 @@ class CompetitionAgent(ChickenAgent):
 
     def get_action(self):
         # TODO: Fill out get action 
-        return self.CONTINUE
+        raise NotImplementedError
 
     def update(self):
         return None
