@@ -7,8 +7,14 @@ You'll implement strategies like Fictitious Play and Exponential Weights, and pa
 ## Setup and Installation
 Follow these steps to set up your environment and install the necessary package for the lab.
 
-### Step 1: Create a Virtual Environment
-Open your terminal and navigate to your project directory. Run the following commands to create a Python virtual environment named `.venv`.
+### Step 1: Git Clone the Repository 
+Open your terminal and navigate to where you want to clone the repository
+```bash 
+git clone https://github.com/brown-agt/lab01-stencil.git
+```
+
+### Step 2: Create a Virtual Environment
+Please then navigate to your project directory. Run the following commands to create a Python virtual environment named `.venv`.
 
 If you own a Mac 
 ```bash
@@ -22,7 +28,7 @@ python3 -m venv .venv
 venv\Scripts\activate
 ```
 
-### Step 2: Install the agt server package
+### Step 3: Install the agt server package
 ```bash
 pip install agt-server==1.0.4
 ```
