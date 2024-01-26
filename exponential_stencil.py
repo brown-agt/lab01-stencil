@@ -1,4 +1,4 @@
-from agents.base_agents.rps_agent import RPSAgent
+from agt_server.agents.base_agents.rps_agent import RPSAgent
 from local_games.rps_arena import RPSArena
 from agt_server.agents.test_agents.rps.ta_agent.my_agent import TAAgent
 import numpy as np
@@ -10,8 +10,8 @@ class ExponentialAgent(RPSAgent):
         self.setup()
 
     def setup(self):
-        self.ROCK, self.SCISSORS, self.PAPER = 0, 1, 2
-        self.actions = [self.ROCK, self.SCISSORS, self.PAPER]
+        self.ROCK, self.PAPER, self.SCISSORS  = 0, 1, 2
+        self.actions = [self.ROCK, self.PAPER, self.SCISSORS]
         self.my_utils = np.zeros(len(self.actions))
         self.counts = [0, 0, 0]
 
@@ -47,7 +47,7 @@ class ExponentialAgent(RPSAgent):
 
 
 if __name__ == "__main__":
-    agent_name = "Exponential" # Please give your agent a name
+    agent_name = ... # Please give your agent a name
     agent = ExponentialAgent(agent_name)
     arena = RPSArena(
         num_rounds=1000,

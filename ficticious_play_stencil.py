@@ -6,13 +6,9 @@ from agt_server.agents.test_agents.rps.ta_agent.my_agent import TAAgent
 
 class FictitiousPlayAgent(RPSAgent):
     def setup(self):
-        self.ROCK, self.SCISSORS, self.PAPER = 0, 1, 2
-        self.actions = [self.ROCK, self.SCISSORS, self.PAPER]
+        self.ROCK, self.PAPER, self.SCISSORS = 0, 1, 2
+        self.actions = [self.ROCK, self.PAPER, self.SCISSORS]
         self.opp_action_history = []
-
-        # NOTE: Changing this will only change your perception of the utility and will not
-        #       change the actual utility used in the game
-        self.utility = np.array([[0, -1, 1], [1, 0, -1], [-1, 1, 0]])
 
     def get_action(self):
         dist = self.predict()
@@ -22,14 +18,14 @@ class FictitiousPlayAgent(RPSAgent):
     def update(self):
         """
         Updates opp action history to be a record of opponent moves
-            Rock - 0, Paper - 1, Scissors - 2
+        Rock - 0, Paper - 1, Scissors - 2
         """
         self.opp_action_history = self.get_opp_action_history()
 
     def predict(self):
         """
-        Uses the opponent’s previous moves (self.opp_action_history) to generate and save a probability distribution
-        over the opponent’s next move in (self.dist).
+        Uses the opponent’s previous moves (self.opp_action_history) to generate and return a probability distribution
+        over the opponent’s next move
         """
         # TODO Return a a probability distribution over the opponent’s next move
         raise NotImplementedError
@@ -44,7 +40,7 @@ class FictitiousPlayAgent(RPSAgent):
         raise NotImplementedError
 
 if __name__ == "__main__":
-    agent_name = "FP" # Please give your agent a name
+    agent_name = ... # Please give your agent a name
 
     agent = FictitiousPlayAgent(agent_name)
     arena = RPSArena(
