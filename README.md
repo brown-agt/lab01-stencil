@@ -30,7 +30,7 @@ venv\Scripts\activate
 
 ### Step 3: Install the agt server package
 ```bash
-pip install agt-server==1.0.4
+pip install agt-server
 ```
 
 ## Agent Methods 
