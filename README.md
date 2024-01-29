@@ -25,7 +25,7 @@ source .venv/bin/activate
 If you own a Windows 
 ```bash 
 python3 -m venv .venv
-venv\Scripts\activate
+.venv\Scripts\activate
 ```
 
 ### Step 3: Install the agt server package
