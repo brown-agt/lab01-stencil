@@ -30,6 +30,7 @@ venv\Scripts\activate
 
 ### Step 3: Install the agt server package
 ```bash
+pip install --upgrade pip
 pip install agt-server
 ```
 
