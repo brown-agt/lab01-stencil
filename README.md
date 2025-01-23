@@ -44,5 +44,5 @@ For both the `RPSAgent`s and `ChickenAgent`s here are a few methods that you may
 - `self.get_opp_util_history()` is a method that returns a list of your opponent's utility from previous rounds played.
 - `self.get_last_action()` is a method that returns a your last action from the previous round.
 - `self.get_last_util()` is a method that returns a your last utility from the previous round.
-- `self.get_opp_action_history()` is a method that returns a your opponent's last action from the previous round.
-- `self.get_opp_util_history()` is a method that returns a your opponent's last utility from the previous round.
+- `self.get_opp_last_action()` is a method that returns a your opponent's last action from the previous round.
+- `self.get_opp_last_util()` is a method that returns a your opponent's last utility from the previous round.
