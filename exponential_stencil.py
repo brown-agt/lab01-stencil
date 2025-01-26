@@ -1,5 +1,5 @@
 from agt_server.agents.base_agents.rps_agent import RPSAgent
-from local_games.rps_arena import RPSArena
+from agt_server.local_games.rps_arena import RPSArena
 from agt_server.agents.test_agents.rps.ta_agent.my_agent import TAAgent
 import numpy as np
 
