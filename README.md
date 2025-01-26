@@ -7,6 +7,23 @@ You'll implement strategies like Fictitious Play and Exponential Weights, and pa
 ## Setup and Installation
 Follow these steps to set up your environment and install the necessary package for the lab.
 
+**IMPORTANT: Please install/use a version of `Python >= 3.10`**
+To check which version of Python you're using please run
+```bash
+python --version
+```
+
+If you installed Python 3.11 but your computer defaults to Python 3.9 you can initialize the virtual environment below to use 
+Python 3.11 instead by running 
+```bash
+python3.11 -m venv .venv
+```
+Instead of 
+```bash
+python3 -m venv .venv
+```
+
+
 ### Step 1: Git Clone the Repository 
 Open your terminal and navigate to where you want to clone the repository
 ```bash 
