@@ -27,25 +27,25 @@ class FictitiousPlayAgent(RPSAgent):
         Uses the opponent’s previous moves (self.opp_action_history) to generate and return a probability distribution
         over the opponent’s next move
         """
-        # TODO Return a a probability distribution over the opponent’s next move
+        # TODO Return a probability distribution over the opponent’s next move
         raise NotImplementedError
 
     def optimize(self, dist):
         """
         Given the distribution over the opponent's next move (output of predict) and knowledge of the payoffs (self.calculate_utils),
-        Return the best move according to Ficticious Play.
+        Return the best move according to FP (Fictitious Play).
         Please return one of [self.ROCK, self.PAPER, self.SCISSORS]
         """
         # TODO Calculate the expected payoff of each action and return the action with the highest payoff
         raise NotImplementedError
 
 if __name__ == "__main__":
-    agent_name = ... # Please give your agent a name
+    agent_name = ??? # Please give your agent a name
 
     agent = FictitiousPlayAgent(agent_name)
     arena = RPSArena(
         num_rounds=1000,
-        timeout=1,
+        timeout=100,
         players=[
             agent,
             TAAgent("TA_Agent_1"),
