@@ -39,7 +39,7 @@ class ExponentialAgent(RPSAgent):
     def calc_move_probs(self):
         """
          Uses your historical average rewards to generate a probability distribution over your next move using
-         the Exponential Weights strateg
+         the Exponential Weights strategy
         """
         # TODO Calculate the average reward for each action over time and return the softmax of it
         raise NotImplementedError
@@ -47,7 +47,7 @@ class ExponentialAgent(RPSAgent):
 
 
 if __name__ == "__main__":
-    agent_name = ... # Please give your agent a name
+    agent_name = ??? # Please give your agent a name
     agent = ExponentialAgent(agent_name)
     arena = RPSArena(
         num_rounds=1000,
