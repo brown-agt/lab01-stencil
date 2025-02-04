@@ -14,13 +14,20 @@ python --version
 ```
 
 If you installed Python 3.11 but your computer defaults to Python 3.9 you can initialize the virtual environment below to use 
-Python 3.11 instead by running 
+Python 3.11 instead by running:
+
+If you own a Mac 
 ```bash
 python3.11 -m venv .venv
 ```
 Instead of 
 ```bash
 python3 -m venv .venv
+```
+
+If you own a Windows 
+```bash
+py -3.11 -m venv .venv
 ```
 
 
